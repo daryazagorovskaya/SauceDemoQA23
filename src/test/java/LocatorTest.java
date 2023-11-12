@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 
 public class LocatorTest extends BaseTest {
 
-
     @Test
     public void sauceDemo() {
         driver.get("https://www.saucedemo.com/");
