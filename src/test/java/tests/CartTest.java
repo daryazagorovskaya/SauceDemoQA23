@@ -9,7 +9,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class CartTest extends BaseTest {
-    @Test
+    @Test(description = "Checking removed product from the cart")
     public void removeProduct() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -21,7 +21,7 @@ public class CartTest extends BaseTest {
         Assert.assertTrue(cartPage.isProductInTheCart("Sauce Labs Bolt T-Shirt"));
     }
 
-    @Test
+    @Test(description = "Checking added product from the cart")
     public void addProductInTheCart() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -32,7 +32,7 @@ public class CartTest extends BaseTest {
                 "Wrong product has been added into the cart");
     }
 
-    @Test
+    @Test(description = "Checking added product by index from the cart")
     public void addProductInTheCartByIndex() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -43,7 +43,7 @@ public class CartTest extends BaseTest {
                 "Sauce Labs Bike Light");
     }
 
-    @Test
+    @Test(description = "Checking added product by price and name from the cart")
     public void checkProductByPriceAndName() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -53,7 +53,7 @@ public class CartTest extends BaseTest {
                 "$9.99");
     }
 
-    @Test
+    @Test(description = "Checking added product by name from the cart")
     public void checkProductByName(){
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
