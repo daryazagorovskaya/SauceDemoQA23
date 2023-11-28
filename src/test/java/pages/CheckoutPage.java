@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,14 +20,14 @@ public class CheckoutPage extends BasePage {
         super(driver);
     }
 
+    @Step("Open the successful payment page")
     public void isOpened() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[text()='Thank you for your order!']")));
     }
 
+    @Step("Checkout process")
     public void payment(String name, String lastname, String zipcode) {
         driver.findElement(CHECKOUT_BUTTON).click();
-        //WebDriverWait wait = new WebDriverWait(driver, 10);
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Checkout: Your Information']")));
         driver.findElement(CHECKOUT_FIRSTNAME).sendKeys(name);
         driver.findElement(CHECKOUT_LASTNAME).sendKeys(lastname);
         driver.findElement(CHECKOUT_ZIPCODE).sendKeys(zipcode);
@@ -34,6 +35,7 @@ public class CheckoutPage extends BasePage {
         driver.findElement(CHECKOUT_FINISH).click();
     }
 
+    @Step("Returns an message about success order")
     public String successOrder() {
         return driver.findElement(ORDER_MESSAGE).getText();
     }

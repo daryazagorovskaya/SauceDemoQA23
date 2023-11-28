@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,20 +17,24 @@ public class BurgerMenuPage extends BasePage{
         super(driver);
     }
 
+    @Step("Logout BurgerMenu page")
     public void logOut() {
         driver.findElement(BURGER_MENU).click();
         driver.findElement(LOGOUT_BUTTON).click();
     }
 
+    @Step("Check transit to login window")
     public boolean returnLoginWindow() {
         return driver.findElement(LOGIN_BUTTON).isDisplayed();
     }
 
+    @Step("Testing a button click 'about'")
     public void aboutButton() {
         driver.findElement(BURGER_MENU).click();
         driver.findElement(ABOUT_BUTTON).click();
     }
 
+    @Step("Check transit to main site")
     public boolean checkTransitMainSite() {
          driver.get(SAUCE_LABS_URL);
         return true;

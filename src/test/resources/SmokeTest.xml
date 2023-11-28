@@ -4,11 +4,14 @@
     <test name="Thread #1">
         <classes>
             <class name="tests.LoginTest"/>
+            <class name="tests.CheckoutTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="Thread #2">
         <classes>
             <class name="tests.ProductsTest"/>
+            <class name="tests.CartTest"/>
+            <class name="tests.BurgerMenuTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

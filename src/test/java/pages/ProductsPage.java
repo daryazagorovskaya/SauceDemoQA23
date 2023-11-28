@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,24 +18,29 @@ public class ProductsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Opening products page")
     public void open() {
         driver.get(BASE_URL + "inventory.html");
     }
 
+    @Step("Returns title")
     public String getTitle() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(TITLE));
         return driver.findElement(TITLE).getText();
     }
 
+    @Step("Add product to cart")
     public void addToCart(String product) {
         By addToCartButton = By.xpath(String.format(ADD_TO_CART_PATTERN, product));
         driver.findElement(addToCartButton).click();
     }
 
+    @Step("Opening cart")
     public void openCart() {
         driver.findElement(CART_LINK).click();
     }
 
+    @Step("Returns name of product")
     public String inventoryItemText() {
         return driver.findElement(INVENTORY_ITEM_NAME).getText();
     }

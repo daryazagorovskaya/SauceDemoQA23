@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,28 +21,34 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    @Step("Opening checkout page")
     public void isOpened() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("checkout")));
     }
 
+    @Step("Check if product in the cart by name")
     public String productInCart(String item) {
          By productInCart = By.xpath(String.format(PRODUCT_NAME_IN_CART, item));
          return driver.findElement(productInCart).getText();
     }
 
+    @Step("Removing a product by name")
     public void removeItem(String item) {
         By removeItem = By.xpath(String.format(REMOVE_BUTTON, item));
          driver.findElement(removeItem).click();
     }
 
+    @Step("Check if product in the cart")
     public boolean isProductInTheCart(String product) {
        return driver.findElement(By.xpath(String.format("//*[text()='%s']", product))).isDisplayed();
     }
 
+    @Step("Search for a product by index")
     public String getProductFromCart(int index){
         return driver.findElements(INVENTORY_ITEM).get(index).getText();
     }
 
+    @Step("Search for a product by name")
     public ArrayList <String> getProductNames() {
        List<WebElement> allProductsElements = driver.findElements(INVENTORY_ITEM);
        ArrayList<String> names = new ArrayList<>();
@@ -51,6 +58,7 @@ public class CartPage extends BasePage {
         return names;
     }
 
+    @Step("Check price by product name")
     public String getProductPrice(String product) {
        return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, product))).getText();
     }

@@ -5,9 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
 import pages.*;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 @Listeners(TestListener.class)
@@ -22,7 +24,7 @@ public class BaseTest {
 
     @Parameters({"browser"})
     @BeforeMethod(description = "Browser settings")
-    public void setup(@Optional("chrome") String browser) {
+    public void setup(@Optional("chrome") String browser, ITestContext testContext) {
         if(browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
@@ -33,7 +35,8 @@ public class BaseTest {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         }
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        testContext.setAttribute("driver", driver);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         loginPage = new LoginPage(driver);
         productsPage = new ProductsPage(driver);
