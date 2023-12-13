@@ -1,11 +1,12 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static org.testng.Assert.assertEquals;
-
+@Log4j2
 public class LoginPage extends BasePage {
 
 
@@ -25,6 +26,7 @@ public class LoginPage extends BasePage {
 
     @Step("Login by {user}")
     public void login(String user, String password) {
+        log.info("Login by {user}");
         driver.findElement(USERNAME_INPUT).sendKeys(user);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).submit();
@@ -32,6 +34,7 @@ public class LoginPage extends BasePage {
 
     @Step("Returns an error message")
     public String getErrorMessage() {
+        log.info("Returns an error message");
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 }
