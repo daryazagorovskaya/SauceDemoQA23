@@ -9,7 +9,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ProductsTest  extends BaseTest {
 
-    @Test
+    @Test(description = "Product buy verification", retryAnalyzer = Retry.class )
     public void buyProduct() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
@@ -20,7 +20,7 @@ public class ProductsTest  extends BaseTest {
 
     }
 
-    @Test
+    @Test(description = "Product buy verification")
     public void buyProduct2() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");

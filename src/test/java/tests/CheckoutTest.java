@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 
 public class CheckoutTest extends BaseTest {
 
-    @Test
-    public void successCheckout() {
+    @Test(description = "Verifying successful payment")
+    public void ExecuteSuccessCheckout() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         productsPage.addToCart("Sauce Labs Bike Light");

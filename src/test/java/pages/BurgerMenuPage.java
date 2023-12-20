@@ -1,8 +1,10 @@
 package pages;
 
+import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+@Log4j2
 public class BurgerMenuPage extends BasePage{
 
     private final By LOGOUT_BUTTON = By.id("logout_sidebar_link");
@@ -16,21 +18,29 @@ public class BurgerMenuPage extends BasePage{
         super(driver);
     }
 
+    @Step("Logout BurgerMenu page")
     public void logOut() {
+        log.info("Logout BurgerMenu page");
         driver.findElement(BURGER_MENU).click();
         driver.findElement(LOGOUT_BUTTON).click();
     }
 
+    @Step("Check transit to login window")
     public boolean returnLoginWindow() {
+        log.info("Check transit to login window");
         return driver.findElement(LOGIN_BUTTON).isDisplayed();
     }
 
+    @Step("Testing a button click 'about'")
     public void aboutButton() {
+        log.info("Testing a button click 'about'");
         driver.findElement(BURGER_MENU).click();
         driver.findElement(ABOUT_BUTTON).click();
     }
 
+    @Step("Check transit to main site")
     public boolean checkTransitMainSite() {
+        log.info("Check transit to main site");
          driver.get(SAUCE_LABS_URL);
         return true;
     }
